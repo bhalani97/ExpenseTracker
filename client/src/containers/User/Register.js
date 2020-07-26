@@ -23,7 +23,7 @@ const [msg,setMsg] = useState('')
                 setPassword('')
                 setUsername('')
             }else{
-                setMsg('Something Went Wrong')
+                setMsg('Something Went Wrong ')
             }
         
         })
