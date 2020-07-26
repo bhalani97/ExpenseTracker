@@ -79,27 +79,7 @@ module.exports = {
       // ssl: true,
 
     },
-    models: {
-      migrate: "safe"
-    },
-    blueprints: {
-      shortcuts: false
-    },
-    security: {
-      cors: {
-          allRoutes: true,
-          allowOrigins: ['http://localhost:3000']
-      },
-    },
-    session: {
-      cookie: {
-        // secure: true,
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
-      }
-    },
-sockets:{
-  allowOrigins:"*"
-}
+   
   },
 
 
@@ -174,9 +154,9 @@ sockets:{
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allowOrigins: [
+        'https://example.com',
+      ]
     },
 
   },
@@ -276,10 +256,7 @@ sockets:{
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: "*",
 
 
     /***************************************************************************
