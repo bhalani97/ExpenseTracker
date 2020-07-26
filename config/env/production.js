@@ -47,6 +47,12 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+      adapter:'sails-mongo',
+      url:'mongodb://root:1234@cluster0-shard-00-00.wo3a5.mongodb.net:27017,cluster0-shard-00-01.wo3a5.mongodb.net:27017,cluster0-shard-00-02.wo3a5.mongodb.net:27017/tracker',
+      ssl:true,
+      authSource:'admin',
+      replicaSet:'atlas-csi7gk-shard-0',
+      
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
