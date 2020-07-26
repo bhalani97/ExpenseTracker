@@ -79,6 +79,24 @@ module.exports = {
       // ssl: true,
 
     },
+    models: {
+      migrate: "safe"
+    },
+    blueprints: {
+      shortcuts: false
+    },
+    security: {
+      cors: {
+          allRoutes: true,
+          allowOrigins: ['http://localhost:3000']
+      },
+    },
+    session: {
+      cookie: {
+        // secure: true,
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+      }
+    },
 
   },
 
