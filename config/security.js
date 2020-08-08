@@ -30,7 +30,7 @@ module.exports.security = {
 
   cors: {
     allRoutes: true,
-    allowOrigins: ['http://localhost','http://extrackbyd.herokuapp.com'],
+    allowOrigins: ['http://localhost','http://extrackbyd.herokuapp.com','https://expensetrackerbyd.herokuapp.com','http://extrackbyd.herokuapp.com'],
     allowCredentials: false,
     allowRequestHeaders: 'content-type,accept,authorization',
     allowRequestMethods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
