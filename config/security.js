@@ -30,11 +30,11 @@ module.exports.security = {
 
   cors: {
     allRoutes: true,
-    allowOrigins: ['http://localhost','http://extrackbyd.herokuapp.com','https://expensetrackerbyd.herokuapp.com','http://extrackbyd.herokuapp.com'],
-    allowCredentials: false,
-    allowRequestHeaders: 'content-type,accept,authorization',
-    allowRequestMethods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
-    allowAnyOriginWithCredentialsUnsafe: true
+  allowOrigins: '*',
+  allowCredentials: false,
+  allowRequestHeaders: 'content-type,accept,authorization',
+  allowRequestMethods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
+  allowAnyOriginWithCredentialsUnsafe: true
   },
 
 
@@ -52,6 +52,6 @@ module.exports.security = {
   *                                                                           *
   ****************************************************************************/
 
-  // csrf: false
+  csrf: false
 
 };
