@@ -155,7 +155,7 @@ module.exports = {
     ***************************************************************************/
     cors: {
       allowOrigins: [
-        'https://example.com',
+        'http://extrackbyd.herokuapp.com','http://localhost',
       ]
     },
 
@@ -257,8 +257,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-      'http://localhost:3000',
-      'https://staging.example.com',
+      'http://extrackbyd.herokuapp.com','http://localhost'
     ],
 
 
