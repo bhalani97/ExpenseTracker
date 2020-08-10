@@ -36,7 +36,7 @@ module.exports = {
       _.each(socketIds, function (socketId) {
         console.log('Emitted TO'+socketId)
               sails.io.to(socketId).emit("account", {
-                data
+                data 
               }); //broadcast to all listeners
               
             });
