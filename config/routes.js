@@ -10,7 +10,10 @@
 
 module.exports.routes = {
 "POST /register":"UserController.register",
-"POST /login":"UserController.login"
+"POST /login":"UserController.login",
+"POST /account":"AccountController.create",
+"POST /accounts":"AccountController.getAccount",
+
 
 
 };

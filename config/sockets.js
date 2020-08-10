@@ -9,6 +9,8 @@
  * https://sailsjs.com/config/sockets
  */
 
+const cipher = require("../api/services/cipher");
+
 module.exports.sockets = {
 
   /***************************************************************************
@@ -41,14 +43,30 @@ module.exports.sockets = {
   * https://sailsjs.com/config/sockets#?beforeconnect                        *
   *                                                                          *
   ***************************************************************************/
+ transports: ["polling", "websocket"],
+  beforeConnect: function(handshake, proceed) {
+    
+  try{
+console.log("getting Req not connected yet")
+    let token = "";
+    if (handshake._query && handshake._query.token) {
+      token = handshake._query.token;
+    }
+    if (
+      handshake.headers &&
+      (handshake.headers.authorization || handshake.headers.Authorization)
+    ) {
+      token = handshake.headers.authorization || handshake.headers.Authorization;
+    }
+    const userData = cipher.verifyToken(token)
+    handshake.headers.userId = userData.id
+    return proceed(undefined, true);
 
-  // beforeConnect: function(handshake, proceed) {
-  //
-  //   // `true` allows the socket to connect.
-  //   // (`false` would reject the connection)
-  //   return proceed(undefined, true);
-  //
-  // },
+  }catch(error){
+    return proceed(undefined, false);
+  }
+  
+  },
 
 
   /***************************************************************************

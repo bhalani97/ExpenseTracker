@@ -6,12 +6,15 @@ const ALGORITHM = "HS256";
 
 module.exports = {
   createToken(user) {
-    return jwt.sign({ user: user.username }, SECRET_KEY, {
+    return jwt.sign({ user: user.username,id:user.id }, SECRET_KEY, {
       algorithm: ALGORITHM,
       expiresIn: EXPIRES_IN_SECONDS,
     });
   },
   verifyToken(token){
       return jwt.verify(token,SECRET_KEY)
+  },
+  getUserId(token){
+    return jwt.verify(token,SECRET_KEY).id
   }
 };

@@ -7,16 +7,31 @@
 
 module.exports = {
 
-
-    tableName:"User",
-    name:{
-      type:"string"
+primaryKey:'id',
+    attrbutes: {
+      username: {
+        type: "string",
+      },
+      password: {
+        type: "string",
+      },
+      firstname: {
+        type: "string",
+      },
+      lastname: {
+        type: "string",
+      },
+      email: {
+        type: "string",
+      },
+      password: {
+        type: "string",
+      },
+     accounts:{
+       collection:'account',
+       via:'owner'
+     }
     },
-    password:{
-      type:"string"
-    }
-
-
 
 };
 

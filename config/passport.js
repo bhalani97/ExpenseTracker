@@ -1,11 +1,9 @@
 const passport = require("passport");
-const cipher = require("../api/models/services/cipher");
-const { use } = require("passport");
+const cipher = require("../api/services/cipher");
 const LocalStrategy = require("passport-local").Strategy;
 
 const _onLocalStrategyAuth = async (username, password, next) => {
-  console.log(username);
-  console.log(password);
+
   const user = await User.findOne({ username: username });
   if(!user) return  next(null,null,{message:"Usernot Found"})
   if(user.password!==password){
@@ -22,8 +20,7 @@ module.exports = {
             return res.forbidden(error||user,{ message: info && info.message ? info.message : "Login"})
         }
         const token = cipher.createToken(user)
-        console.log(cipher.verifyToken(token))
-        return res.ok({token})
+        return res.ok({token,userid:user.id})
     },
   },
 };

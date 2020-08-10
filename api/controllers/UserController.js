@@ -10,12 +10,11 @@ const _ = require('lodash')
 module.exports = {
   async register(req, resp) {
     try {
-      const { username, password } = req.allParams();
-      const user = await User.create({
-        username: username,
-        password: password,
-      }).fetch();
-      if (user) {
+
+     const user = req.allParams()
+     delete user.confirm
+      const u = await User.create(user).fetch();
+      if (u) {
         resp.ok({ msg: "created" });
       }
     } catch (err) {
@@ -24,7 +23,6 @@ module.exports = {
   },
   async login(req, resp) {
     try {
-        console.log(req.allParams())
         passport.authenticate('local', _.partial(sails.config.passport.onPassportAuth, req, resp))(req, resp);
 
     } catch (error) {
