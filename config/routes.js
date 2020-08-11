@@ -13,6 +13,9 @@ module.exports.routes = {
 "POST /login":"UserController.login",
 "POST /account":"AccountController.create",
 "POST /accounts":"AccountController.getAccount",
+"POST /transcation":"TranscationController.create",
+"POST /transcations":"TranscationController.getTranscation"
+
 
 
 

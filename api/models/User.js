@@ -30,7 +30,11 @@ primaryKey:'id',
      accounts:{
        collection:'account',
        via:'owner'
-     }
+     },
+     transcations:{
+      collection:'transcation',
+      via:'owner'
+    }
     },
 
 };
