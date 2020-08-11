@@ -8,7 +8,7 @@ module.exports={
             return true
         }
     return false
-    },
+    }, 
     async getTranscation(userId){
         try{
     
