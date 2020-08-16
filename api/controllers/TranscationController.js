@@ -51,11 +51,10 @@ module.exports = {
 },
   async getTranscation(req,resp){
     try{
-      const {userid} = req.allParams()
-
-      const data = await TranscationService.getTranscation(userid)
-      if(data){
-          resp.ok(data)
+     const data = req.allParams()
+      const d = await TranscationService.getTranscation(data)
+      if(d){
+          resp.ok(d)
       }
       else{
           resp.badRequest()

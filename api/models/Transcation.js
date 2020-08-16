@@ -39,14 +39,17 @@ module.exports = {
   async afterCreate(entry, cb) {
     console.log(JSON.stringify(entry))
     const socketIds = userWiseSocketIds(entry.owner)
-    const data =await transcation.getTranscation(entry.owner)
-    console.log(JSON.stringify(data))
-    console.log(entry.owner)
-    console.log("Connected"+JSON.stringify(socketIds))
+    const data = await Transcation.findOne({id:entry.id}).populate(
+      "fromaccount"
+    )
+    // console.log(JSON.stringify(data))
+    // console.log(entry.owner)
+    // console.log("Connected"+JSON.stringify(socketIds))
       _.each(socketIds, function (socketId) {
         console.log('Emitted TO'+socketId)
               sails.io.to(socketId).emit("transcation", {
-                data 
+                data ,
+                name:'ADD'
               }); //broadcast to all listeners
               
             });
@@ -55,14 +58,18 @@ module.exports = {
     async afterUpdate(entry,cb){
       console.log(JSON.stringify(entry))
       const socketIds = userWiseSocketIds(entry.owner)
-      const data =await transcation.getTranscation(entry.owner)
-      console.log(JSON.stringify(data))
-      console.log(entry.owner)
+      // const data =await transcation.getTranscation(entry.owner)
+      const data = await Transcation.findOne(entry.id).populate(
+        "fromaccount"
+      )
+      // console.log(JSON.stringify(data))
+      // console.log(entry.owner)
       console.log("Connected"+JSON.stringify(socketIds))
         _.each(socketIds, function (socketId) {
           console.log('Emitted TO'+socketId)
                 sails.io.to(socketId).emit("transcation", {
-                  data 
+                  data,
+                  name:'UPDATE'
                 }); //broadcast to all listeners
                 
               });
@@ -71,14 +78,15 @@ module.exports = {
     async afterDestroy(entry,cb){
       console.log(JSON.stringify(entry))
       const socketIds = userWiseSocketIds(entry.owner)
-      const data =await transcation.getTranscation(entry.owner)
-      console.log(JSON.stringify(data))
-      console.log(entry.owner)
-      console.log("Connected"+JSON.stringify(socketIds))
+      // const data =await transcation.getTranscation(entry.owner)
+      // console.log(JSON.stringify(data))
+      // console.log(entry.owner)
+      // console.log("Connected"+JSON.stringify(socketIds))
         _.each(socketIds, function (socketId) {
           console.log('Emitted TO'+socketId)
                 sails.io.to(socketId).emit("transcation", {
-                  data 
+                  data:entry ,
+                  name:'DELETE'
                 }); //broadcast to all listeners
                 
               });
