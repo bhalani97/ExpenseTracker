@@ -52,6 +52,38 @@ module.exports = {
             });
     cb();
     },
+    async afterUpdate(entry,cb){
+      console.log(JSON.stringify(entry))
+      const socketIds = userWiseSocketIds(entry.owner)
+      const data =await transcation.getTranscation(entry.owner)
+      console.log(JSON.stringify(data))
+      console.log(entry.owner)
+      console.log("Connected"+JSON.stringify(socketIds))
+        _.each(socketIds, function (socketId) {
+          console.log('Emitted TO'+socketId)
+                sails.io.to(socketId).emit("transcation", {
+                  data 
+                }); //broadcast to all listeners
+                
+              });
+      cb();
+    },
+    async afterDestroy(entry,cb){
+      console.log(JSON.stringify(entry))
+      const socketIds = userWiseSocketIds(entry.owner)
+      const data =await transcation.getTranscation(entry.owner)
+      console.log(JSON.stringify(data))
+      console.log(entry.owner)
+      console.log("Connected"+JSON.stringify(socketIds))
+        _.each(socketIds, function (socketId) {
+          console.log('Emitted TO'+socketId)
+                sails.io.to(socketId).emit("transcation", {
+                  data 
+                }); //broadcast to all listeners
+                
+              });
+      cb();
+    }
 
 };
 

@@ -21,6 +21,34 @@ module.exports = {
       }
     
   },
+  async update(req,resp){
+    try{
+      const data = req.allParams()
+      console.log(data)
+      if(await TranscationService.update(data)){
+          return resp.ok({message:"Updated"})
+      }
+      return resp.badRequest()
+    }
+    catch(error){
+        resp.serverError(error)
+    }
+  
+},
+
+  async delete(req,resp){
+    try{
+      const {id} = req.allParams()
+      console.log(id)
+      if(await TranscationService.delete(id)){
+          return resp.ok({message:"Deleted"})
+      }
+      return resp.badRequest()
+    }
+    catch(error){
+        resp.serverError(error)
+    }
+},
   async getTranscation(req,resp){
     try{
       const {userid} = req.allParams()

@@ -14,8 +14,9 @@ module.exports.routes = {
 "POST /account":"AccountController.create",
 "POST /accounts":"AccountController.getAccount",
 "POST /transcation":"TranscationController.create",
-"POST /transcations":"TranscationController.getTranscation"
-
+"PUT /transcation":"TranscationController.update",
+"POST /transcations":"TranscationController.getTranscation",
+"DELETE /transcation":"TranscationController.delete",
 
 
 
