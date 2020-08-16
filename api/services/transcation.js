@@ -12,7 +12,7 @@ module.exports={
     async update(data){
       const {id} = data
       delete data.id
-      const ans = await Transcation.updateOne(id).set(data).fetch()
+      const ans = await Transcation.updateOne(id).set(data)
       if(ans){
           return true
       }
