@@ -17,6 +17,7 @@ module.exports.routes = {
 "PUT /transcation":"TranscationController.update",
 "POST /transcations":"TranscationController.getTranscation",
 "DELETE /transcation":"TranscationController.delete",
+'GET /home':'HomeController.getData'
 
 
 
