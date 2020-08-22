@@ -12,26 +12,7 @@ module.exports = {
     try {
       const { userid } = req.allParams();
       let data =await HomeService.getData(userid);
-data = _.groupBy(data,'fromaccount.name')
-let balance = []
-_.map(data,(d,name)=>{
-
-    let credit = 0
-    let debit = 0
-    _.map(d,trans=>{
-
-        if(trans.type==='credit'){
-credit=credit+trans.amount
-        }
-        else if(trans.type==='debit'){
-debit=debit+trans.amount
-
-        }
-    })
-    balance.push({name,balance:credit-debit})
-
-})
-      return resp.ok(balance);
+      return resp.ok(data);
     } catch (error) {
       resp.serverError(error);
     }
