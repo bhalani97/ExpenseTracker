@@ -154,10 +154,10 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      allowOrigins: [
-        'http://extrackbyd.herokuapp.com','http://localhost',"https://extrackbyd.herokuapp.com","https://extracker-client.vercel.app"
-      ]
-    },
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false
+    }
 
   },
 
