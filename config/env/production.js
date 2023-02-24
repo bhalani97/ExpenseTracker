@@ -155,7 +155,7 @@ module.exports = {
     ***************************************************************************/
     cors: {
       allowOrigins: [
-        'http://extrackbyd.herokuapp.com','http://localhost',"https://extrackbyd.herokuapp.com"
+        'http://extrackbyd.herokuapp.com','http://localhost',"https://extrackbyd.herokuapp.com","https://extracker-client.vercel.app"
       ]
     },
 
